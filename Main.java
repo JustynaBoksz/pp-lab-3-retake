@@ -1,43 +1,67 @@
 import medicine.Patient;
 import medicine.Doctor;
+import medicine.Nurse;
+import medicine.Hospital;
 
 public class Main {
     public static void main(String[] args) {
+        
+        Hospital hospital = new Hospital();
+
+        
         Patient patient1 = new Patient("John", "Smith", 30, "Flu", 101);
         Patient patient2 = new Patient("Jane", "Smith", 40, "Pneumonia", 102);
         Patient patient3 = new Patient("Mike", "Johnson", 25, "Broken Leg", 103);
         Patient patient4 = new Patient("Emily", "Davis", 35, "Appendicitis", 104);
 
-        System.out.println("Informations about patients:");
-        patient1.displayInfo();
-        patient2.displayInfo();
-        patient3.displayInfo();
-        patient4.displayInfo();
-
-        System.out.println();
-
-        System.out.println("First Name: " + patient1.getFirstName());
-        System.out.println("Last Name: " + patient1.getLastName());
-        System.out.println("Illness: " + patient1.getIllness());
-        System.out.println("Room Number: " + patient1.getRoomNumber());
-
-        System.out.println();
-
-        patient1.setIllness("Pneumonia");
-        patient1.setRoomNumber(105);
-
-        patient1.displayInfo();
-
-        System.out.println();
+        
+        hospital.addPatient(patient1);
+        hospital.addPatient(patient2);
+        hospital.addPatient(patient3);
+        hospital.addPatient(patient4);
 
         
         Doctor doctor = new Doctor("Alice", "Brown", 45, "Cardiology");
-        doctor.displayInfo();
-        doctor.performDuty();
+        Nurse nurse = new Nurse("Emily", "Clark", 30, "General");
 
         
-        System.out.println("Specialization: " + doctor.getSpecialization());
+        hospital.addStaff(doctor);
+        hospital.addStaff(nurse);
+
+        
+        System.out.println("Hospital staff:");
+        hospital.displayStaff();
+        System.out.println("Hospital patients:");
+        hospital.displayPatients();
+
+        
+        patient1.setIllness("Pneumonia");
+        patient1.setRoomNumber(105);
+
+        
         doctor.setSpecialization("Neurology");
-        System.out.println("Updated Specialization: " + doctor.getSpecialization());
+
+        
+        System.out.println("Updated information:");
+        System.out.println("Doctor:");
+        doctor.displayInfo();
+        System.out.println("Nurse:");
+        nurse.displayInfo();
+        System.out.println("Updated Patient:");
+        patient1.displayInfo();
+
+        
+        doctor.performDuty();
+        nurse.performDuty();
+
+        
+        hospital.removeStaff(nurse);
+        hospital.removePatient(patient4);
+
+        
+        System.out.println("Hospital staff after removal:");
+        hospital.displayStaff();
+        System.out.println("Hospital patients after removal:");
+        hospital.displayPatients();
     }
 }
