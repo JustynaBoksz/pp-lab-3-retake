@@ -35,13 +35,45 @@ public class Main {
         hospital.displayPatients();
 
         
+        Patient patient5 = new Patient("Sarah", "Wilson", 28, "Fever", 105);
+        Patient patient6 = new Patient("Tom", "Brown", 50, "Diabetes", 106);
+
+        
+        hospital.addPatient(patient5);
+        hospital.addPatient(patient6);
+
+        
+        Doctor doctor2 = new Doctor("Gregory", "House", 50, "Orthopedics");
+
+        
+        Nurse nurse2 = new Nurse("Anna", "Hall", 32, "Pediatrics");
+        Nurse nurse3 = new Nurse("David", "Lee", 40, "Surgery");
+        Nurse nurse4 = new Nurse("Lisa", "Green", 29, "ER");
+
+       
+        hospital.addStaff(doctor2);
+        hospital.addStaff(nurse2);
+        hospital.addStaff(nurse3);
+        hospital.addStaff(nurse4);
+
+        
+        hospital.removePatient(patient3); 
+        hospital.removeStaff(nurse3); 
+
+        
+        System.out.println("Hospital staff after updates:");
+        hospital.displayStaff();
+        System.out.println("Hospital patients after updates:");
+        hospital.displayPatients();
+
+        
         patient1.setIllness("Pneumonia");
         patient1.setRoomNumber(105);
 
         
         doctor.setSpecialization("Neurology");
 
-        
+       
         System.out.println("Updated information:");
         System.out.println("Doctor:");
         doctor.displayInfo();
@@ -53,15 +85,5 @@ public class Main {
         
         doctor.performDuty();
         nurse.performDuty();
-
-        
-        hospital.removeStaff(nurse);
-        hospital.removePatient(patient4);
-
-        
-        System.out.println("Hospital staff after removal:");
-        hospital.displayStaff();
-        System.out.println("Hospital patients after removal:");
-        hospital.displayPatients();
     }
 }
